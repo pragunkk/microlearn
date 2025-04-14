@@ -1,0 +1,14 @@
+{
+  "topic": "Augusta National Golf Club before",
+  "summary": "Augusta National, hallowed ground for golfers worldwide, is more than just a course; it's a legend. Opened in 1933, it was conceived by Bobby Jones and Clifford Roberts as a place where amateurs could compete with professionals. Its meticulously manicured fairways, treacherous greens, and iconic flower beds create a visually stunning, and incredibly challenging, experience. The club is famously exclusive, with a limited membership and strict traditions. The Masters Tournament, held annually in April, is its crown jewel, drawing the world's best players to compete for the coveted green jacket. Amen Corner, a particularly challenging stretch of holes 11, 12, and 13, is a constant source of drama. From Gene Sarazen's 'Shot Heard 'Round the World' to Tiger Woods's historic victories, Augusta National is forever etched in golf history.",
+  "quiz": {
+    "question": "What is the name given to the famous stretch of holes 11, 12, and 13 at Augusta National?",
+    "options": [
+      "Devil's Triangle",
+      "Hell's Half Acre",
+      "Amen Corner",
+      "Sarazen's Stretch"
+    ],
+    "correctAnswer": "Amen Corner"
+  }
+}
