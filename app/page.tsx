@@ -54,15 +54,15 @@ export default function HomePage() {
       {/* Apply dynamic blob-like gradient position based on mouse movement */}
       <style jsx global>{`
         body {
-          background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #3e93ff 15%, transparent 35%), 
-                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #00bcd4 15%, transparent 35%), 
-                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #9c27b0 15%, transparent 35%), 
-                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #e91e63 15%, transparent 35%),
-                      radial-gradient(circle at ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, #4f6dff 20%, transparent 40%),
-                      radial-gradient(circle at ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, #00bcd4 20%, transparent 40%),
-                      radial-gradient(circle at ${gradientPosition.x + 30}% ${gradientPosition.y - 10}%, #9c27b0 20%, transparent 40%),
-                      radial-gradient(circle at ${gradientPosition.x - 25}% ${gradientPosition.y - 15}%, #e91e63 20%, transparent 40%),
-                      radial-gradient(circle at ${gradientPosition.x + 50}% ${gradientPosition.y + 40}%, #3e93ff 20%, transparent 40%);
+          background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #10002B 15%, transparent 35%), 
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #240046 15%, transparent 35%), 
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #3C096C 15%, transparent 35%), 
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #5A189A 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, #7B2CBF 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, #9D4EDD 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 30}% ${gradientPosition.y - 10}%, #C77DFF 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x - 25}% ${gradientPosition.y - 15}%, #E0AAFF 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 50}% ${gradientPosition.y + 40}%, #10002B 20%, transparent 40%);
           background-size: 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%; /* Larger size for more expansive blobs */
           background-position: ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, 
                                ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, 

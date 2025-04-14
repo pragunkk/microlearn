@@ -20,7 +20,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #3e93ff, #0095ff, #1500ff, #5e02ff); /* Blue gradient */
+  background: linear-gradient(135deg, #00083b, #0095ff, #1500ff, #000f41); /* Blue gradient */
   background-size: 400% 400%; /* Larger gradient to allow movement */
   animation: gradientAnimation 15s ease infinite; /* Only apply gradient movement animation */
   color: var(--foreground);
