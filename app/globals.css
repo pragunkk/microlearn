@@ -20,9 +20,12 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, #3e93ff, #0095ff, #1500ff, #5e02ff); /* Blue gradient */
+  background-size: 400% 400%; /* Larger gradient to allow movement */
+  animation: gradientAnimation 15s ease infinite; /* Only apply gradient movement animation */
   color: var(--foreground);
   font-family: 'Teko', sans-serif;
+  transition: background-position 0.1s ease-out; /* Smooth transition when mouse moves */
 }
 
 /* Navbar Gradient */
@@ -107,8 +110,26 @@ body {
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(135deg, #6e7dff, #3e93ff);
+  background: linear-gradient(135deg, #19baff, #3e93ff);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }
 
+/* Keyframes for the gradient animation (random movement) */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 25%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 25% 75%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

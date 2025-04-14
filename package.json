@@ -11,10 +11,13 @@
   "dependencies": {
     "@clerk/nextjs": "^6.14.3",
     "@google/genai": "^0.8.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.6.5",
     "lucide-react": "^0.488.0",
     "next": "15.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -14,14 +14,44 @@ export default function QuizPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false); // Freeze control
+  const [isAnswered, setIsAnswered] = useState(false);
+
+  const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+
+  const sensitivity = 0.3;
+  const delay = 50;
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
+
+    const x = ((clientX / innerWidth) * 100) * sensitivity;
+    const y = ((clientY / innerHeight) * 100) * sensitivity;
+
+    setTimeout(() => {
+      setMousePosition({
+        x: Math.min(Math.max(x, 0), 100),
+        y: Math.min(Math.max(y, 0), 100),
+      });
+    }, delay);
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    setGradientPosition(mousePosition);
+  }, [mousePosition]);
 
   const fetchQuiz = async () => {
     setLoading(true);
     setError(null);
     setSelectedAnswer(null);
     setFeedback(null);
-    setIsAnswered(false); // Reset freeze state
+    setIsAnswered(false);
 
     try {
       const res = await fetch("/api/lesson");
@@ -39,10 +69,10 @@ export default function QuizPage() {
   };
 
   const handleAnswerClick = (option: string) => {
-    if (!quiz || isAnswered) return; // Prevent answering more than once
+    if (!quiz || isAnswered) return;
 
     setSelectedAnswer(option);
-    setIsAnswered(true); // Freeze the quiz
+    setIsAnswered(true);
 
     if (option === quiz.correctAnswer) {
       setFeedback('✅ Correct!');
@@ -52,18 +82,18 @@ export default function QuizPage() {
   };
 
   useEffect(() => {
-    fetchQuiz(); // Auto-fetch quiz when the page loads
+    fetchQuiz();
   }, []);
 
   return (
-    <div className="space-y-6 bg-gradient min-h-screen p-6"> {/* Apply the gradient background here */}
-      <h2 className="text-2xl font-bold text-white">Today’s AI-Generated Quiz</h2>
+    <div className="space-y-6 p-6 relative z-10 text-white min-h-screen">
+      <h2 className="text-2xl font-bold">Today’s AI-Generated Quiz</h2>
 
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-400">{error}</p>}
 
       {quiz ? (
-        <div className="bg-gray-900 p-6 rounded-xl text-gray-100 space-y-4 shadow-lg">
-          <h4 className="text-lg text-white">{quiz.question}</h4>
+        <div className="bg-black/60 p-6 rounded-xl backdrop-blur-md text-gray-100 space-y-4 shadow-lg">
+          <h4 className="text-lg">{quiz.question}</h4>
           <ul className="space-y-2">
             {quiz.options.map((option, idx) => (
               <li
@@ -84,8 +114,48 @@ export default function QuizPage() {
           {feedback && <p className="mt-4 text-sm text-gray-300">{feedback}</p>}
         </div>
       ) : (
-        <p className="text-gray-400">Loading quiz...</p> // Display a loading message
+        <p className="text-gray-400">Loading quiz...</p>
       )}
+
+      {/* Background Animation Layer */}
+      <style jsx global>{`
+        body {
+          background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #3e93ff 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #00bcd4 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #9c27b0 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #e91e63 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, #4f6dff 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, #00bcd4 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 30}% ${gradientPosition.y - 10}%, #9c27b0 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x - 25}% ${gradientPosition.y - 15}%, #e91e63 20%, transparent 40%),
+                      radial-gradient(circle at ${gradientPosition.x + 50}% ${gradientPosition.y + 40}%, #3e93ff 20%, transparent 40%);
+          background-size: 600% 600%;
+          background-position: ${gradientPosition.x}% ${gradientPosition.y}%;
+          background-blend-mode: overlay;
+          transition: background-position 0.5s ease-out;
+          animation: gradientAnimation 15s ease infinite;
+          margin: 0;
+          overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+          0% {
+            background-position: 0% 50%, 25% 50%, 50% 50%, 75% 50%;
+          }
+          25% {
+            background-position: 100% 50%, 25% 50%, 50% 50%, 75% 50%;
+          }
+          50% {
+            background-position: 50% 100%, 25% 25%, 50% 25%, 75% 25%;
+          }
+          75% {
+            background-position: 25% 75%, 25% 25%, 50% 75%, 75% 75%;
+          }
+          100% {
+            background-position: 0% 50%, 25% 50%, 50% 50%, 75% 50%;
+          }
+        }
+      `}</style>
     </div>
   );
 }
