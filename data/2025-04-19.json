@@ -1,0 +1,14 @@
+{
+  "topic": "Liam Neeson",
+  "summary": "Liam Neeson, born in Ballymena, Northern Ireland, is a renowned actor known for his commanding presence and diverse roles. He began his career on stage before transitioning to film, gaining early recognition in movies like 'Excalibur' and 'The Mission.' Neeson achieved international stardom with his Oscar-nominated performance in 'Schindler's List,' a powerful portrayal of Oskar Schindler. He further cemented his place as a leading man with roles in historical dramas like 'Michael Collins' and blockbusters such as 'Star Wars: Episode I – The Phantom Menace.' In recent years, Neeson reinvented himself as an action star with the 'Taken' franchise, showcasing his physicality and intensity. Beyond action, he continues to tackle dramatic roles, proving his versatility and enduring appeal as one of Hollywood's most respected actors. His career spans decades and genres, consistently delivering captivating performances.",
+  "quiz": {
+    "question": "Which film earned Liam Neeson an Oscar nomination for Best Actor?",
+    "options": [
+      "Taken",
+      "Batman Begins",
+      "Schindler's List",
+      "Michael Collins"
+    ],
+    "correctAnswer": "C"
+  }
+}

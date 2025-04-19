@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 type QuizData = {
   question: string;
   options: string[];
-  correctAnswer: string;
+  correctAnswer: string; // e.g. "C"
 };
 
 export default function QuizPage() {
@@ -68,13 +68,14 @@ export default function QuizPage() {
     }
   };
 
-  const handleAnswerClick = (option: string) => {
+  const handleAnswerClick = (option: string, index: number) => {
     if (!quiz || isAnswered) return;
 
-    setSelectedAnswer(option);
+    const selectedCode = String.fromCharCode(65 + index); // A, B, C, D
+    setSelectedAnswer(selectedCode);
     setIsAnswered(true);
 
-    if (option === quiz.correctAnswer) {
+    if (selectedCode === quiz.correctAnswer) {
       setFeedback('✅ Correct!');
     } else {
       setFeedback(`❌ Incorrect. The correct answer was: "${quiz.correctAnswer}"`);
@@ -87,7 +88,7 @@ export default function QuizPage() {
 
   return (
     <div className="space-y-6 p-6 relative z-10 text-white min-h-screen">
-      <h2 className="text-2xl font-bold">Today’s AI-Generated Quiz</h2>
+      <h2 className="text-2xl font-bold">Today’s Quiz</h2>
 
       {error && <p className="text-red-400">{error}</p>}
 
@@ -95,21 +96,27 @@ export default function QuizPage() {
         <div className="bg-black/60 p-6 rounded-xl backdrop-blur-md text-gray-100 space-y-4 shadow-lg">
           <h4 className="text-lg">{quiz.question}</h4>
           <ul className="space-y-2">
-            {quiz.options.map((option, idx) => (
-              <li
-                key={idx}
-                className={`p-2 rounded-lg transition ${
-                  selectedAnswer === option
-                    ? option === quiz.correctAnswer
-                      ? 'bg-green-700'
-                      : 'bg-red-600'
-                    : 'hover:bg-gray-700 cursor-pointer'
-                } ${isAnswered && selectedAnswer !== option ? 'opacity-60 cursor-not-allowed' : ''}`}
-                onClick={() => handleAnswerClick(option)}
-              >
-                {option}
-              </li>
-            ))}
+            {quiz.options.map((option, idx) => {
+              const optionCode = String.fromCharCode(65 + idx); // A, B, C, D
+
+              return (
+                <li
+                  key={idx}
+                  className={`p-2 rounded-lg transition ${
+                    isAnswered
+                      ? optionCode === quiz.correctAnswer
+                        ? 'bg-green-700'
+                        : selectedAnswer === optionCode
+                        ? 'bg-red-600'
+                        : 'opacity-60 cursor-not-allowed'
+                      : 'hover:bg-gray-700 cursor-pointer'
+                  }`}
+                  onClick={() => handleAnswerClick(option, idx)}
+                >
+                  <span className="font-bold mr-2">{optionCode}.</span> {option}
+                </li>
+              );
+            })}
           </ul>
           {feedback && <p className="mt-4 text-sm text-gray-300">{feedback}</p>}
         </div>
@@ -120,30 +127,26 @@ export default function QuizPage() {
       {/* Background Animation Layer */}
       <style jsx global>{`
         body {
-          background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #10002B 15%, transparent 35%), 
-                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #240046 15%, transparent 35%), 
-                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #3C096C 15%, transparent 35%), 
+          background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #10002B 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #240046 15%, transparent 35%),
+                      radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #3C096C 15%, transparent 35%),
                       radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #5A189A 15%, transparent 35%),
                       radial-gradient(circle at ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, #7B2CBF 20%, transparent 40%),
                       radial-gradient(circle at ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, #9D4EDD 20%, transparent 40%),
                       radial-gradient(circle at ${gradientPosition.x + 30}% ${gradientPosition.y - 10}%, #C77DFF 20%, transparent 40%),
                       radial-gradient(circle at ${gradientPosition.x - 25}% ${gradientPosition.y - 15}%, #E0AAFF 20%, transparent 40%),
                       radial-gradient(circle at ${gradientPosition.x + 50}% ${gradientPosition.y + 40}%, #10002B 20%, transparent 40%);
-          background-size: 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%, 600% 600%; /* Larger size for more expansive blobs */
-          background-position: ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, ${gradientPosition.x}% ${gradientPosition.y}%, 
-                               ${gradientPosition.x - 5}% ${gradientPosition.y + 5}%, ${gradientPosition.x + 15}% ${gradientPosition.y + 20}%, 
-                               ${gradientPosition.x + 30}% ${gradientPosition.y - 10}%, ${gradientPosition.x - 25}% ${gradientPosition.y - 15}%, 
-                               ${gradientPosition.x + 50}% ${gradientPosition.y + 40}%;
-          animation: gradientAnimation 15s ease infinite; /* Gradual background animation */
-          transition: background-position 0.5s ease-out; /* Smooth transition */
-          background-blend-mode: overlay; /* Blends the gradients together */
+          background-size: 600% 600%;
+          background-position: ${gradientPosition.x}% ${gradientPosition.y}%;
+          animation: gradientAnimation 15s ease infinite;
+          transition: background-position 0.5s ease-out;
+          background-blend-mode: overlay;
           height: 100vh;
           margin: 0;
           overflow: hidden;
           color: #fff;
         }
 
-        /* Define the keyframes for the gradient animation */
         @keyframes gradientAnimation {
           0% {
             background-position: 0% 50%, 25% 50%, 50% 50%, 75% 50%, 0% 75%, 25% 75%, 50% 75%, 75% 75%, 0% 25%;

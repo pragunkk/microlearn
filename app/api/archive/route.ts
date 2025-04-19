@@ -3,26 +3,31 @@ import path from 'path';
 
 export async function GET() {
   const dataDir = path.join(process.cwd(), 'data');
-  let history = [];
+  let archive = [];
 
   try {
     const files = fs.readdirSync(dataDir).filter(file => file.endsWith('.json'));
 
-    history = files.map(file => {
+    archive = files.map(file => {
       const filePath = path.join(dataDir, file);
       const content = fs.readFileSync(filePath, 'utf-8');
       const parsed = JSON.parse(content);
 
       return {
         topic: parsed.topic || 'Untitled',
+        summary: parsed.summary || '',
+        quiz: parsed.quiz || null,
         date: file.replace('.json', ''),
-        score: parsed.score,
       };
-    }).sort((a, b) => b.date.localeCompare(a.date)); // sort descending
+    }).sort((a, b) => b.date.localeCompare(a.date)); // newest first
   } catch (error) {
-    console.error("Error reading history:", error);
-    history = [];
+    console.error("Error reading archive:", error);
+    archive = [];
   }
 
-  return new Response(JSON.stringify(history));
+  return new Response(JSON.stringify(archive), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
