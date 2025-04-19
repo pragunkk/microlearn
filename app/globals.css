@@ -26,6 +26,7 @@ body {
   color: var(--foreground);
   font-family: 'Teko', sans-serif;
   transition: background-position 0.1s ease-out; /* Smooth transition when mouse moves */
+  overflow: hidden;
 }
 
 /* Navbar Gradient */
@@ -36,6 +37,10 @@ body {
   font-size: 1.2rem;
   letter-spacing: 0.5px;
   transition: all 0.3s ease-in-out;
+}
+
+.navbar{
+  position:sticky;
 }
 
 /* Hover effect on Navbar */
@@ -63,6 +68,10 @@ body {
 .navbar-links li:hover {
   animation: carousel-hover 0.6s ease-in-out;
 }
+
+
+
+
 
 /* Keyframes for carousel hover effect */
 @keyframes carousel-hover {
@@ -133,3 +142,4 @@ body {
     background-position: 0% 50%;
   }
 }
+
