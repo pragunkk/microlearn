@@ -40,24 +40,22 @@ MicroLearn is a minimalist, AI-powered daily learning web app that delivers bite
 ```bash
 git clone https://github.com/your-username/microlearn.git
 cd microlearn
+```
 
-2. Install dependencies
-bash
-Copy
-Edit
+### 2. Install dependencies
+```bash
 npm install
+```
 
-3. Set up environment variables
+### 3. Set up environment variables
 Create a .env.local file:
 
-bash
-Copy
-Edit
+```bash
 GOOGLE_API_KEY=your_gemini_api_key
+```
 You can get your Gemini API key from https://makersuite.google.com/app/apikey
 
-4. Run the development server
-bash
-Copy
-Edit
+### 4. Run the development server
+```bash
 npm run dev
+```
