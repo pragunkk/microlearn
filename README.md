@@ -30,9 +30,9 @@ https://microlearn-pkk.vercel.app/
 - **Next.js 14** with App Router
 - **TypeScript**
 - **Tailwind CSS** with custom animations
-- **Gemini API (`@google/generative-ai`)**
+- **Gemini API**
 - **Wikipedia Top 10 API**
-- **Clerk (Optional)** for session handling (no DB used)
+- **Clerk** for session handling
 
 ---
 
