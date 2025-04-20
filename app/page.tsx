@@ -58,7 +58,7 @@ export default function HomePage() {
           </h1>
           <a href="/lesson">
             <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-6 rounded-full shadow-md transition-transform transform hover:scale-105">
-              Today's Lesson
+              Today&apos;s Lesson
             </button>
           </a>
           <br></br>

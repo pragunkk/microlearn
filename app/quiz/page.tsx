@@ -9,7 +9,7 @@ type QuizData = {
 };
 
 export default function QuizPage() {
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
   const [quiz, setQuiz] = useState<QuizData | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);

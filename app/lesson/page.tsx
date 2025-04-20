@@ -83,7 +83,7 @@ export default function LessonPage() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setAiResponse(data.answer);
-    } catch (err) {
+    } catch (_err) {
       setAiResponse("Sorry, there was a problem getting a response.");
     } finally {
       setAsking(false);

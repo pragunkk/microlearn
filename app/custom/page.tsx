@@ -13,19 +13,16 @@ export default function CustomPage() {
   }> | null>(null);
   const [error, setError] = useState('');
 
-  // per‑question interaction
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
   const [answered, setAnswered] = useState<{ [key: number]: boolean }>({});
   const [feedback, setFeedback] = useState<{ [key: number]: string }>({});
   const [score, setScore] = useState(0);
 
-  // background animation state
   const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const sensitivity = 0.3;
   const delay = 50;
 
-  // quirky loading phrases (≤15 chars)
   const loadingPhrases = [
     'Crunching txt',
     'Digesting...',
@@ -40,7 +37,6 @@ export default function CustomPage() {
   ];
   const [phraseIndex, setPhraseIndex] = useState(0);
 
-  // cycle phrases when loading
   useEffect(() => {
     let iv: ReturnType<typeof setInterval>;
     if (loading) {
@@ -50,17 +46,14 @@ export default function CustomPage() {
       }, 800);
     }
     return () => clearInterval(iv);
-  }, [loading]);
+  }, [loading, loadingPhrases.length]); // ✅ FIXED
 
-  // derive button label
   const buttonLabel = loading
     ? loadingPhrases[phraseIndex]
     : 'Generate Summary & Quiz';
 
-  // glitch effect on button during loading
   const buttonClass = `btn-gradient hover:scale-105 ${loading ? 'glitch' : ''}`;
 
-  // handle mouse‐move for background
   const handleMouseMove = (event: MouseEvent) => {
     const { clientX, clientY } = event;
     const { innerWidth, innerHeight } = window;
@@ -81,7 +74,6 @@ export default function CustomPage() {
     setGradientPosition(mousePosition);
   }, [mousePosition]);
 
-  // keep body scrollable
   useEffect(() => {
     const orig = document.body.style.overflow;
     document.body.style.overflow = 'auto';
@@ -108,8 +100,12 @@ export default function CustomPage() {
       if (data.error) throw new Error(data.error);
       setSummary(data.summary);
       setQuiz(data.quiz);
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong!');
+    } catch (err: unknown) { // ✅ FIXED
+      if (err instanceof Error) {
+        setError(err.message || 'Something went wrong!');
+      } else {
+        setError('Something went wrong!');
+      }
     } finally {
       setLoading(false);
     }
@@ -136,10 +132,9 @@ export default function CustomPage() {
         Custom Topic or Link Summary
       </h2>
       <p className="text-gray-300">
-        Enter a topic or paste a link below. We'll generate a summary and a quiz.
+        Enter a topic or paste a link below. We&apos;ll generate a summary and a quiz.
       </p>
 
-      {/* single-line neon input with Enter key support */}
       <div className="neon-input-wrapper w-full">
         <input
           type="text"
@@ -220,7 +215,6 @@ export default function CustomPage() {
         </div>
       )}
 
-      {/* neon outline for input */}
       <style jsx>{`
         .neon-input-wrapper {
           position: relative;
@@ -246,7 +240,6 @@ export default function CustomPage() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        /* glitch effect */
         .glitch {
           position: relative;
           animation: glitch 1s infinite;
@@ -261,7 +254,6 @@ export default function CustomPage() {
         }
       `}</style>
 
-      {/* background animation */}
       <style jsx global>{`
         body {
           background: radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, #10002B 15%, transparent 35%),

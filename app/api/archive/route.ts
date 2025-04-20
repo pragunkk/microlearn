@@ -1,9 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 
+type ArchiveEntry = {
+  topic: string;
+  summary: string;
+  quiz: {
+    question: string;
+    options: string[];
+    correctAnswer: string;
+  } | null;
+  date: string;
+};
+
 export async function GET() {
   const dataDir = path.join(process.cwd(), 'data');
-  let archive = [];
+  let archive: ArchiveEntry[] = [];
 
   try {
     const files = fs.readdirSync(dataDir).filter(file => file.endsWith('.json'));

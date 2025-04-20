@@ -1,6 +1,5 @@
 // app/layout.tsx
 import { ClerkProvider } from "@clerk/nextjs";
-import { AuthButtons } from "@/components/AuthButtons";
 import { Inter } from "next/font/google";
 import Navbar from '../components/Navbar'; // Import the Navbar component
 import './globals.css';

@@ -53,7 +53,7 @@ Only return the JSON. Do not include any extra text or explanations.
     let json;
     try {
       json = JSON.parse(cleanText);
-      console.log("Final parsed JSON:", json); // Log the response for debugging
+      // console.log("Final parsed JSON:", json); // Log the response for debugging
     } catch (err) {
       console.error('Failed to parse Gemini response:', err);
       return NextResponse.json({ error: 'Failed to parse AI response.' }, { status: 500 });

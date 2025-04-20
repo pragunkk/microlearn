@@ -44,7 +44,18 @@ async function fetchInterestingTopic(): Promise<string> {
   }
 }
 
-async function generateLessonAndQuiz(topic: string) {
+// Define the type for the lesson data
+type LessonData = {
+  topic: string;
+  summary: string;
+  quiz: {
+    question: string;
+    options: string[];
+    correctAnswer: string;
+  };
+};
+
+async function generateLessonAndQuiz(topic: string): Promise<LessonData | { error: string }> {
   const prompt = `
 You are an educational AI. Provide an engaging summary of the topic "${topic}" in no more than 200 words.
 
@@ -71,7 +82,7 @@ Only return valid JSON with those three fields. No explanation or extra text.
   const rawText = result.text || '{}';
   const cleanText = rawText.replace(/```json|```/g, '').trim(); // Remove markdown formatting
 
-  let json;
+  let json: LessonData | { error: string };
   try {
     json = JSON.parse(cleanText);
   } catch (err) {
@@ -93,11 +104,9 @@ export async function GET() {
       return NextResponse.json(existingData);
     }
 
-    // If data doesn't exist, fetch the topic and generate the lesson and quiz
     const topic = await fetchInterestingTopic();
-    const lessonData = await generateLessonAndQuiz(topic);
+    const lessonData = await generateLessonAndQuiz(topic); // <-- lessonData is now typed
 
-    // Save the generated data to a file for the current date
     fs.writeFileSync(filePath, JSON.stringify(lessonData, null, 2));
 
     return NextResponse.json(lessonData);
