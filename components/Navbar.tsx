@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar-gradient p-6 shadow-md rounded-b-xl flex justify-between items-center">
       <div className="text-white text-xl font-bold">
         <Image
-          src="/logo2.png" // Make sure to place your logo image in the public directory as 'public/logo.png'
+          src="/logo.png" // Make sure to place your logo image in the public directory as 'public/logo.png'
           alt="MicroLearn Logo"
           width={300}
           height={100}
@@ -29,6 +29,9 @@ export default function Navbar() {
         </li>
         <li>
           <Link href="/profile" className="navbar-link">Profile</Link>
+        </li>
+        <li>
+          <Link href="/custom" className="navbar-link">Custom</Link>
         </li>
       </ul>
       <AuthButtons /> {/* Place AuthButtons here */}

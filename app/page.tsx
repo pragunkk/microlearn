@@ -61,6 +61,8 @@ export default function HomePage() {
               Today's Lesson
             </button>
           </a>
+          <br></br>
+          <p className="text-xl mb-20 py-6">Scroll to know why ↓</p>
         </div>
       </section>
 
