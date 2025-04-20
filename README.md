@@ -38,7 +38,7 @@ MicroLearn is a minimalist, AI-powered daily learning web app that delivers bite
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/microlearn.git
+git clone https://github.com/pragunkk/microlearn.git
 cd microlearn
 ```
 
