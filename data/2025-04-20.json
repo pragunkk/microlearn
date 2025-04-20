@@ -1,0 +1,14 @@
+{
+  "topic": "Joan Baez",
+  "summary": "Joan Baez, a voice of conscience and a musical icon, rose to prominence in the early 1960s folk revival. Her crystal-clear soprano and unwavering commitment to social justice made her a powerful force both on and off the stage. Baez popularized Bob Dylan's early work and fearlessly used her platform to advocate for civil rights, peace, and environmentalism. She marched alongside Martin Luther King Jr., protested the Vietnam War, and championed human rights globally. Beyond her activism, Baez boasts a remarkable discography spanning decades, encompassing folk, protest songs, and original compositions. Her influence extends far beyond music, inspiring generations to use their voices for positive change. Even today, Baez remains an influential figure, a testament to the power of music and activism combined.",
+  "quiz": {
+    "question": "What major social movement was Joan Baez heavily involved in during the 1960s?",
+    "options": [
+      "The Civil Rights Movement",
+      "The Women's Suffrage Movement",
+      "The Temperance Movement",
+      "The Environmental Movement"
+    ],
+    "correctAnswer": "The Civil Rights Movement"
+  }
+}

@@ -59,7 +59,7 @@ Then, create one multiple-choice quiz question in this JSON format:
     "correctAnswer": "A"
   }
 }
-
+the correctAnswer field must contain the entire string which is in th option and not the option letter.
 Only return valid JSON with those three fields. No explanation or extra text.
 `;
 

@@ -1,14 +1,14 @@
 {
-  "topic": "Liam Neeson",
-  "summary": "Liam Neeson, born in Ballymena, Northern Ireland, is a renowned actor known for his commanding presence and diverse roles. He began his career on stage before transitioning to film, gaining early recognition in movies like 'Excalibur' and 'The Mission.' Neeson achieved international stardom with his Oscar-nominated performance in 'Schindler's List,' a powerful portrayal of Oskar Schindler. He further cemented his place as a leading man with roles in historical dramas like 'Michael Collins' and blockbusters such as 'Star Wars: Episode I – The Phantom Menace.' In recent years, Neeson reinvented himself as an action star with the 'Taken' franchise, showcasing his physicality and intensity. Beyond action, he continues to tackle dramatic roles, proving his versatility and enduring appeal as one of Hollywood's most respected actors. His career spans decades and genres, consistently delivering captivating performances.",
+  "topic": "Snapchat",
+  "summary": "Snapchat is a hugely popular social media platform known for its ephemeral content. Users primarily share photos and short videos, called 'Snaps,' which disappear after a set amount of time, ranging from seconds to 24 hours for Stories. Its defining feature is this focus on impermanence, encouraging spontaneous and unfiltered sharing. Beyond disappearing Snaps, Snapchat offers features like lenses, filters, and geofilters that overlay digital effects onto images. Chatting, video calls, and the 'Discover' page, which features content from media outlets, are other key components. Snapchat's demographic skews younger, making it a powerful platform for reaching that audience. While its focus on privacy and ephemeral content has appeal, concerns remain about potential misuse and the pressure of constantly creating content. Its innovative format has heavily influenced other social media platforms.",
   "quiz": {
-    "question": "Which film earned Liam Neeson an Oscar nomination for Best Actor?",
+    "question": "What is the defining characteristic of Snapchat?",
     "options": [
-      "Taken",
-      "Batman Begins",
-      "Schindler's List",
-      "Michael Collins"
+      "Permanent posts",
+      "Ephemeral content",
+      "Long-form videos",
+      "Public forums"
     ],
-    "correctAnswer": "C"
+    "correctAnswer": "B"
   }
 }

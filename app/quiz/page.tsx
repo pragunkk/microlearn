@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 type QuizData = {
   question: string;
   options: string[];
-  correctAnswer: string; // e.g. "C"
+  correctAnswer: string; // e.g. "Curb Your Enthusiasm"
 };
 
 export default function QuizPage() {
@@ -75,7 +75,7 @@ export default function QuizPage() {
     setSelectedAnswer(selectedCode);
     setIsAnswered(true);
 
-    if (selectedCode === quiz.correctAnswer) {
+    if (option === quiz.correctAnswer) {
       setFeedback('✅ Correct!');
     } else {
       setFeedback(`❌ Incorrect. The correct answer was: "${quiz.correctAnswer}"`);
@@ -104,7 +104,7 @@ export default function QuizPage() {
                   key={idx}
                   className={`p-2 rounded-lg transition ${
                     isAnswered
-                      ? optionCode === quiz.correctAnswer
+                      ? option === quiz.correctAnswer
                         ? 'bg-green-700'
                         : selectedAnswer === optionCode
                         ? 'bg-red-600'
