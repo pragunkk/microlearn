@@ -22,6 +22,9 @@ MicroLearn is a minimalist, AI-powered daily learning web app that delivers bite
 
 ---
 
+## Try it out here
+https://microlearn-pkk.vercel.app/
+
 ## 🛠 Tech Stack
 
 - **Next.js 14** with App Router
