@@ -17,6 +17,10 @@ export default function LessonPage() {
   const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
+  const [userQuestion, setUserQuestion] = useState('');
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [asking, setAsking] = useState(false);
+
   const sensitivity = 0.3;
   const delay = 50;
 
@@ -62,6 +66,30 @@ export default function LessonPage() {
     }
   };
 
+  const askFollowUp = async () => {
+    if (!userQuestion.trim() || !lesson) return;
+    setAsking(true);
+    setAiResponse(null);
+    try {
+      const res = await fetch("/api/followup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topic: lesson.topic,
+          summary: lesson.summary,
+          question: userQuestion,
+        }),
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      setAiResponse(data.answer);
+    } catch (err) {
+      setAiResponse("Sorry, there was a problem getting a response.");
+    } finally {
+      setAsking(false);
+    }
+  };
+
   useEffect(() => {
     fetchLesson();
   }, []);
@@ -95,7 +123,7 @@ export default function LessonPage() {
     "Rewriting history in 5 lines or less...",
     "Shuffling the trivia deck 🃏",
     "Crunching numbers and noodles 🍜",
-    "Casting Level 5 Summarize!",
+    "Casting Level 5 Summarize!"
   ];
 
   const [loadingMessageIndex, setLoadingMessageIndex] = useState(() =>
@@ -120,6 +148,32 @@ export default function LessonPage() {
 
     return () => clearInterval(interval);
   }, [loading, initialMessageSet]);
+
+  const shufflePhrases = [
+    "Decoding...",
+    "Almost done...",
+    "Crunching...",
+    "Thinking...",
+    "Hold tight...",
+    "Gathering...",
+    "Processing...",
+    "Let’s go...",
+    "Loading...",
+  ];
+  
+
+  const [currentPhrase, setCurrentPhrase] = useState(shufflePhrases[0]);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
+  useEffect(() => {
+    if (asking) {
+      const interval = setInterval(() => {
+        setPhraseIndex((prev) => (prev + 1) % shufflePhrases.length);
+        setCurrentPhrase(shufflePhrases[phraseIndex]);
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, [asking, phraseIndex]);
 
   return (
     <div className="space-y-6 p-6 relative z-10 text-white min-h-screen">
@@ -147,6 +201,35 @@ export default function LessonPage() {
           >
             Take Quiz
           </button>
+
+          <div className="mt-6 space-y-3">
+            <h4 className="text-lg font-medium">Have a question?</h4>
+            <textarea
+              value={userQuestion}
+              onChange={(e) => setUserQuestion(e.target.value)}
+              placeholder="Ask a follow-up question about the lesson..."
+              className="w-full p-3 rounded-lg bg-gray-900 text-white border border-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400"
+              rows={3}
+            />
+            <button
+              onClick={askFollowUp}
+              disabled={asking || !userQuestion.trim()}
+              className="btn-gradient hover:scale-105"
+            >
+              {asking ? (
+                <span className="glitch-animation">{currentPhrase}</span>
+              ) : (
+                "Ask AI"
+              )}
+            </button>
+
+            {aiResponse && (
+              <div className="bg-purple-900/40 mt-4 p-4 rounded-xl border border-purple-500">
+                <h5 className="text-purple-300 font-semibold mb-1">AI Response:</h5>
+                <p>{aiResponse}</p>
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         !loading && <p className="text-gray-300">No lesson available at the moment.</p>
@@ -173,28 +256,15 @@ export default function LessonPage() {
           background-blend-mode: overlay;
           color: #fff;
           overflow: auto;
-          padding-bottom: 10vh; /* Prevents content from being hidden at the bottom */
+          padding-bottom: 10vh;
         }
 
         @keyframes gradientAnimation {
           0% { background-position: 0% 50%, 25% 50%, 50% 50%, 75% 50%, 0% 75%, 25% 75%, 50% 75%, 75% 75%, 0% 25%; }
           25% { background-position: 100% 50%, 25% 50%, 50% 50%, 75% 50%, 100% 75%, 25% 75%, 50% 75%, 75% 75%, 100% 25%; }
-          50% { background-position: 50% 100%, 25% 50%, 50% 50%, 75% 50%, 50% 25%, 25% 25%, 50% 25%, 75% 25%, 50% 75%; }
-          75% { background-position: 25% 75%, 25% 50%, 50% 50%, 75% 50%, 25% 25%, 25% 75%, 50% 75%, 75% 75%, 25% 100%; }
+          50% { background-position: 50% 100%, 25% 50%, 50% 50%, 75% 50%, 50% 25%, 25% 75%, 50% 75%, 75% 75%, 50% 75%; }
+          75% { background-position: 50% 50%, 75% 50%, 50% 50%, 100% 50%, 50% 25%, 25% 75%, 50% 75%, 75% 75%, 100% 75%; }
           100% { background-position: 0% 50%, 25% 50%, 50% 50%, 75% 50%, 0% 75%, 25% 75%, 50% 75%, 75% 75%, 0% 25%; }
-        }
-
-        @keyframes glitch {
-          0% { transform: translate(0); opacity: 1; }
-          20% { transform: translate(-2px, 2px) skew(-5deg); opacity: 0.8; }
-          40% { transform: translate(2px, -1px) skew(5deg); opacity: 0.9; }
-          60% { transform: translate(-1px, 1px) skew(-3deg); opacity: 0.85; }
-          80% { transform: translate(1px, -2px) skew(3deg); opacity: 0.95; }
-          100% { transform: translate(0); opacity: 1; }
-        }
-
-        .glitch-animation {
-          animation: glitch 0.6s ease-in-out;
         }
       `}</style>
     </div>
