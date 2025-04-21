@@ -1,0 +1,14 @@
+{
+  "topic": "A Complete Unknown",
+  "summary": "\"A Complete Unknown\" is the nickname given to Bob Dylan's dramatic shift from folk music to rock and roll at the 1965 Newport Folk Festival. Dylan, previously revered for his acoustic protest songs, took the stage with an electric guitar and a band, unleashing a sound that shocked and polarized the audience. Many folk purists felt betrayed, viewing it as a sell-out and a departure from authentic folk traditions. Boos and jeers erupted, though the intensity and reasons behind them remain debated. Some claim the sound quality was poor, while others maintain it was purely ideological opposition. Regardless, this performance marked a pivotal moment in music history, solidifying Dylan's iconoclastic image and ushering in a new era of folk-rock. It remains a powerful example of artistic evolution and the challenges faced when defying genre expectations.",
+  "quiz": {
+    "question": "What musical genre did Bob Dylan transition to at the 1965 Newport Folk Festival, causing controversy?",
+    "options": [
+      "Folk",
+      "Blues",
+      "Rock and Roll",
+      "Country"
+    ],
+    "correctAnswer": "Rock and Roll"
+  }
+}
