@@ -1,0 +1,14 @@
+{
+  "topic": "Jennifer Lawrence",
+  "summary": "Jennifer Lawrence catapulted to fame in her teens with roles in 'The Bill Engvall Show' and the indie film 'Winter's Bone,' earning her first Oscar nomination. But it was her portrayal of Katniss Everdeen in 'The Hunger Games' franchise that solidified her as a global superstar. Lawrence is known for her down-to-earth personality, quick wit, and outspoken views. Beyond action blockbusters, she's delivered compelling performances in films like 'Silver Linings Playbook' (winning her an Oscar), 'American Hustle,' and 'Joy,' showcasing her versatility as an actress. She consistently chooses roles that challenge her, and her commitment to complex characters and her advocacy for gender equality in Hollywood have made her a respected figure both on and off-screen. More recently she has starred in films such as 'Don't Look Up' and 'No Hard Feelings'.",
+  "quiz": {
+    "question": "Which film earned Jennifer Lawrence her first Academy Award for Best Actress?",
+    "options": [
+      "Winter's Bone",
+      "The Hunger Games",
+      "Silver Linings Playbook",
+      "American Hustle"
+    ],
+    "correctAnswer": "Silver Linings Playbook"
+  }
+}

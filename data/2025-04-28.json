@@ -1,0 +1,14 @@
+{
+  "topic": "Oppenheimer (film)",
+  "summary": "Christopher Nolan's \"Oppenheimer\" is a biographical thriller that plunges into the life of J. Robert Oppenheimer, the brilliant physicist who spearheaded the Manhattan Project during World War II. Driven by the urgency to defeat Nazi Germany in the race to build the first atomic bomb, Oppenheimer assembles a team of scientists at Los Alamos. The film explores the moral and ethical dilemmas he faces as he grapples with the devastating power he unleashes on the world. Post-war, Oppenheimer's security clearance is revoked amidst Cold War paranoia, forcing him to confront the consequences of his creation and the complex legacy he leaves behind. The film is a visually stunning and intellectually stimulating examination of ambition, morality, and the burden of scientific responsibility.",
+  "quiz": {
+    "question": "What was the name of the project led by J. Robert Oppenheimer during World War II?",
+    "options": [
+      "The Edison Initiative",
+      "The Manhattan Project",
+      "The Tesla Experiment",
+      "The Einstein Collaboration"
+    ],
+    "correctAnswer": "The Manhattan Project"
+  }
+}

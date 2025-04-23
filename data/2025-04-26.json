@@ -1,0 +1,14 @@
+{
+  "topic": "Heath Ledger",
+  "summary": "Heath Ledger was an Australian actor who captivated audiences with his raw talent and versatility. Rising to fame in the late 1990s and early 2000s with teen films like '10 Things I Hate About You,' he quickly transitioned to more challenging roles, demonstrating his range in films such as 'The Patriot,' 'Monster's Ball,' and 'Brokeback Mountain,' for which he received an Academy Award nomination. \n\nLedger's dedication to his craft was evident in his commitment to embodying each character fully. His portrayal of the Joker in 'The Dark Knight' is considered iconic, earning him a posthumous Academy Award for Best Supporting Actor. Though his career was tragically cut short by an accidental overdose in 2008, his performances continue to inspire and influence actors today, solidifying his legacy as one of the most gifted performers of his generation.",
+  "quiz": {
+    "question": "Which film earned Heath Ledger a posthumous Academy Award?",
+    "options": [
+      "Brokeback Mountain",
+      "10 Things I Hate About You",
+      "The Dark Knight",
+      "The Patriot"
+    ],
+    "correctAnswer": "The Dark Knight"
+  }
+}
