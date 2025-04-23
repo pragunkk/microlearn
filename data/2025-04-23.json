@@ -1,0 +1,14 @@
+{
+  "topic": "Ronald Reagan",
+  "summary": "Ronald Reagan, the 40th U.S. President, dominated the 1980s with his conservative policies and charismatic leadership. A former actor and California governor, he championed supply-side economics, dubbed \"Reaganomics,\" which aimed to cut taxes and regulations to stimulate growth. He drastically increased military spending, contributing to the end of the Cold War by challenging the Soviet Union's power. Reagan survived an assassination attempt early in his presidency, solidifying his image as a strong and resilient leader. His foreign policy focused on containing communism and promoting democracy. While credited with economic recovery and restoring American pride, Reagan faced criticism for increasing the national debt and for his administration's involvement in the Iran-Contra affair. His legacy remains a subject of debate, with supporters highlighting his role in ending the Cold War and critics pointing to rising inequality during his tenure.",
+  "quiz": {
+    "question": "Which economic policy is most closely associated with Ronald Reagan?",
+    "options": [
+      "Keynesian Economics",
+      "Supply-Side Economics",
+      "Socialism",
+      "Mercantilism"
+    ],
+    "correctAnswer": "Supply-Side Economics"
+  }
+}
